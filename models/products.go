@@ -5,7 +5,6 @@ type Product struct {
 	Name            string  `json:"name"`
 	Type            string  `json:"type"`
 	Image           string  `json:"image"`
-	Price           float64 `json:"price"`
 	OriginalPrice   float64 `json:"original_price"`
 	DiscountedPrice float64 `json:"discounted_price,omitempty"`
 	Rating          float64 `json:"rating"`

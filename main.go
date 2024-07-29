@@ -5,42 +5,36 @@ import (
 	"log"
 	"net/http"
 
-	"go-mysql-backend/handlers"
 	"go-mysql-backend/routes"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
 )
 
-var db *sql.DB
-var err error
+var DB *sql.DB
 
 func main() {
 	log.Println("Starting the application...")
 
 	// Configure the database connection (replace with your own credentials)
-	db, err = sql.Open("mysql", "root:password@tcp(127.0.0.1:3306)/productdb")
+	var err error
+	DB, err = sql.Open("mysql", "root:password123@tcp(127.0.0.1:3306)/e_fashion")
 	if err != nil {
 		log.Fatal("Error connecting to the database:", err)
 	}
-	defer db.Close()
+	defer DB.Close()
 
-	err = db.Ping()
+	err = DB.Ping()
 	if err != nil {
 		log.Fatal("Error pinging the database:", err)
 	}
 	log.Println("Database connection successful")
 
-	// Initialize handlers with the database connection
-	handlers.Initialize(db)
-	handlers.InitializeUsers(db)
-	handlers.InitializeLogin(db)
-
 	// Set up the router
 	router := mux.NewRouter()
 
 	// Register routes
-	routes.RegisterRoutes(router)
+	routes.RegisterRoutes(router, DB)
 
 	// Start the server
 	log.Println("Starting the server on port 8000")
