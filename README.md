@@ -1,6 +1,8 @@
 # E-Fashion Backend
 
 E-Fashion adalah sebuah aplikasi backend untuk platform e-commerce fashion yang dibangun menggunakan Golang dan menggunakan MySQL sebagai database. Proyek ini menyediakan API untuk mengelola produk fashion, kategori, pesanan, dan pengguna.
+**Proyek ini masih dalam tahap pengembangan sebesar 30%**
+
 
 ## Fitur
 
